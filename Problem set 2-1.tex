@@ -1,0 +1,164 @@
+\documentclass[11 pt]{article}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+
+\title{Problem set 1}
+\author{Pablo Boixeda Alvarez}
+
+\newtheorem{Prob}{Problem}
+\newtheorem{Prop}{Proposition}
+\newtheorem{Opt}{Optional Problem}
+
+\theoremstyle{definition}
+\newtheorem{Not}{Notation}
+\newtheorem{Def}{Definition}
+\newtheorem{eg}{Example}
+\newtheorem{re}{Reading}
+
+\theoremstyle{remark}
+\newtheorem{rmk}{Remark}
+
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+  {\end{proof}}
+
+\begin{document}
+\section*{Math 350 Introduction to Abstract algebra}
+\subsection*{Problem set 1}
+
+\begin{re}
+	DF 1.6-1.7, 2.1-2.2
+\end{re}
+\begin{Prob} (Starred* problems are required)
+	
+	DF 1.2: 2, 3*, 7*
+	
+	DF 1.3: 1, 10*, 11*
+	
+	DF 1.4: 2, 4*, 5, 11abde*
+\end{Prob}
+
+\subsection*{Problem 1.2.3}
+If some $x \in D_{2n}$ is not a power of $r$, by using (4) on page 25, we can rewrite $x = sr^i$ uniquely for some $i$. Now, note that $x^2 = sr^isr^i = (sr^is^{-1})r^i = (srs^{-1})^ir^i= (r^{-1})^ir^i= 1$. Since $x \neq 1$, it follows that $x$ has order 2. 
+
+\subsection*{Problem 1.2.7}
+Let $D = \langle a,b | a^2=b^2=(ab)^n=1\rangle$. Define $s=a$ and $r=a^{-1}b$. Then, observe that $s^2=a^2=1$. Furthermore, with order 2 element $a=a^{-1}$, $r^n=(a^{-1}b)^n = (ab)^n = 1$. Next, for $b$, we have that $rs = a^{-1}ba = aba = a(b^{-1}a) = ar^{-1} = sr^{-1}$ since $b=b^{-1}$. 
+\subsection*{Problem 1.3.10}
+
+\subsection*{Problem 1.3.11}
+
+\subsection*{Problem 1.4.4}
+Because $n$ is composite, by definition, there exists some $a$ where $1 < a < n$ that divides $n$. Note that it is impossible for some $b$ such that $ab \equiv 1 (\textrm{mod} n)$. FTSOC, assume that there exists some $b_0$ such that this statement holds true. Then, we can write the above congruence as $ab = 1 + kn = 1 + kam$. We can rewrite this as $a(b-km) = 1$
+
+\subsection*{Problem 1.4.11}
+\subsubsection*{a}
+Evaluate $XY$ to obtain the following.
+\begin{align*}
+XY &= \begin{pmatrix}
+1 & a & b\\
+0 & 1 & c\\
+0 & 0 & 1
+\end{pmatrix} \cdot \begin{pmatrix}
+1 & d & e\\
+0 & 1 & f\\
+0 & 0 & 1
+\end{pmatrix} \\
+&= 
+\begin{pmatrix}
+1 & d+a & e+af+b\\
+0 & 1 & f+c\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+\end{align*}
+We can clearly see that $H(F)$ is closed under matrix multiplication by setting $a = a+d, b = b+e+af, c = f+e$ for generalized $X,Y$. To restrict a non-abelian condition, we can calculate $YX$ and compare and restrict terms. 
+\begin{align*}
+XY &= 
+\begin{pmatrix}
+1 & a+d & b+dc+e\\
+0 & 1 & f+c\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+\end{align*}
+From comparing values, $H(F)$ will be non-abelian as long as $dc \neq af$.
+
+\subsubsection*{b}
+
+To find the inverse, let us first start with the determinant of $X$. By formula, we get the following
+
+\begin{align*}
+Det(X) &= Det \begin{pmatrix}
+1 & a & b\\
+0 & 1 & c\\
+0 & 0 & 1
+\end{pmatrix} \\
+    &= 1 \cdot \begin{pmatrix}
+    1 & c \\
+    0 & 1
+    \end{pmatrix}
+    - a \cdot \begin{pmatrix}
+    0 & c \\
+    0 & 1
+    \end{pmatrix}
+    + b \cdot \begin{pmatrix}
+    0 & 1 \\
+    0 & 0
+    \end{pmatrix} \\
+    &= 1-a(0) + b(0) \\
+    &= 1
+\\
+\end{align*}
+Normally, this would be sufficient enough to prove the inverse property, as we know that the inverse exists from a nonzero determinant. However, finishing the calculations, our inverse $X^{-1}$ would be 
+\begin{align*}
+X^{-1} &= \begin{pmatrix}
+1 & -a & -b+ac\\
+0 & 1 & -c\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+\end{align*}
+Clearly this proves that $H(F)$ is closed under inverses as we can set $a = -a, b = b+ac, c = -c$ from the given formula of elements of $H(F)$, showing that $X^{-1} \in H(F)$.
+
+
+\subsubsection*{d}
+Because $F=\mathbb{Z}/2\mathbb{Z}$ only has two values, we can iterate across all possible values by casework. When $a=0,b=0,c=0$, this is the identity matrix, meaning that this element is order 1. When $a=0,b=1,c=0$, we have the case $X=x^{-1}$, meaning that this is an order 2 element. 
+
+\subsubsection*{e}
+Let $X \in H(\mathbb{R})$. Because $X \neq I$, we have that at least one of $a,b,c$ is nonzero. 
+
+\begin{Prob}
+	Let $G$ be a group $a_1,\dots a_r\in G$. We say that $a_1, \dots, a_r$ pairwise commute if $a_i$ and $a_j$ commute $\forall i,j$. We say $a_1,\dots, a_r$ are rank independent if $a_1^{e_1}\dots a_r^{e_r}=1$ implies that $e_i$ is a multiple of $|a_i|$ for all $i$. We want to prove the following Proposition:
+	\begin{Prop}
+		Let $G$ be a group and $a_1,\dots, a_r\in G$ be pairwise commuting and rank independent elements of finite order. Then $|a_1\dots a_r|=lcm(|a_1|,\dots, |a_r|)$.
+	\end{Prop}
+\begin{enumerate}
+	\item Let $a,b\in G$ two commuting elements. Prove that $(ab)^n=a^nb^n$, $\forall n\in\mathbb{Z}$. (Hint: induction on $n$).
+	\item If $a_1,\dots, a_r$ are pairwise commuting elements. Prove that $(a_1\dots a_r)^n=a_1^n\dots a_r^n$. (Hint: induction on $r$).
+	\item Prove the proposition. (Hint: Use the definition of $lcm$ to check that the order is divisible by $lcm(|a_1|,\dots, |a_r|)$. Use that the order divides $lcm(|a_1|,\dots, |a_r|)$ by raising $a_1\dots a_r$ to the $lcm(|a_1|,\dots, |a_r|)$ power).
+	\item Show that disjoint cycles in $S_n$ are pairwise commuting and rank independent. Deduce DF1.3 15.
+\end{enumerate}
+\end{Prob}
+
+\begin{Prob}
+	Show that $S_n$ is generated by each of the following set of permutations:
+	\begin{enumerate}
+		\item The set of transpositions $\{(j, j+1)|1\leq j<n\}$.
+		\item The set of transpositions $\{(1,k)|1<k\leq n\}$.
+		\item The set $\{(1,2),(1,2,\dots,n)\}$ (Hint: Reduce this to the case 1).
+	\end{enumerate}
+\end{Prob}
+
+\begin{solution}
+To proceed with the proof, we must first prove the following axiom
+
+(1) 
+(2)
+(3) If we prove that the products of the permutations yields all transpositions of the form $(i,i+1)$, then by (1) the proof should follow.
+\end{solution}
+
+\footnotetext{Email address: pablo.boixedaalvarez@yale.edu}
+
+
+
+\end{document}
