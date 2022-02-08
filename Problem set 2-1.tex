@@ -42,21 +42,28 @@
 \end{Prob}
 
 \subsection*{Problem 1.2.3}
-If some $x \in D_{2n}$ is not a power of $r$, by using (4) on page 25, we can rewrite $x = sr^i$ uniquely for some $i$. Now, note that $x^2 = sr^isr^i = (sr^is^{-1})r^i = (srs^{-1})^ir^i= (r^{-1})^ir^i= 1$. Since $x \neq 1$, it follows that $x$ has order 2. 
+If some $x \in D_{2n}$ is not a power of $r$, by using (4) on page 25, we can rewrite $x = sr^i$ uniquely for some $i \in {0,1,...,n-1}$. Now, suppose $i=0$. Then, as $x=s$, we have $x^2=s^2=1$. However, since $s \neq 1$ and $x$ excludes the identity element by construction, $x$ has order 2. Next, suppose $i > 0$. Then, $x^2=(sr^i)^2 = sr^isr^i=sr^{i-1}(rsr^i)=sr^{i-1}(sr^{-1}r^i)=sr^{i-1}sr^{i-1}$. Repeat this reduction until $s^2=sr^0sr^0=s^2$. Again, by the same logic, $x$ has order 2.
+
+Now, note that $x^2 = sr^isr^i = (sr^is^{-1})r^i = (srs^{-1})^ir^i= (r^{-1})^ir^i= 1$. Since $x \neq 1$, it follows that $x$ has order 2. 
+
+To verify generation, first we can clearly see that $s$ and $sr$ both have order 2, since $s^2=1$ and $(sr)^2=srsr=ssr^{-1}r=s^2=1$ and that these are not identity elements. Next, observe that ${s,sr}$ generates ${r,s}$ since $r=s^{-1}(sr) \in G$. Furthermore, because ${r,s}$ generates $D_{2n}$, it follows that ${s,sr}$ also generates $D_{2n}$.
 
 \subsection*{Problem 1.2.7}
-Let $D = \langle a,b | a^2=b^2=(ab)^n=1\rangle$. Define $s=a$ and $r=a^{-1}b$. Then, observe that $s^2=a^2=1$. Furthermore, with order 2 element $a=a^{-1}$, $r^n=(a^{-1}b)^n = (ab)^n = 1$. Next, for $b$, we have that $rs = a^{-1}ba = aba = a(b^{-1}a) = ar^{-1} = sr^{-1}$ since $b=b^{-1}$. 
-\subsection*{Problem 1.3.10}
-Let us prove this with induction. Note that for the 'wrap around' cases, we implicitly define $a_0 := a_m$. For the base case, where $i=1$ for $\sigma = (a_1, a_2, ..., a_m)$, we have that $\sigma(a_k) = a_{k+1}$ mod $m$. For the inductive step, assume that the claim holds true for some $i$. To complete the proof, we solve for $i+1$. For $\sigma^{i+1} = \sigma(\sigma^i(a_k)) = \sigma(a_{k+i}) = a_{k+i+1}$. By induction, we have proved that $\sigma^i(a_k)=a_{k+i}$.
+From 1.2.3 and $a=s$ and $b=sr$, we have that $a,b$ already generates $D_{2n}$, so we only need to show that the relations are equivalent. Since $a=s$, using the new relations, $a^2 = s^2 = (s(sr))^n = (s^2r)^n = r^n = 1$. Again, since $b=sr$, $b^2=(sr)^2=srsr=1$. Multiplying both sides by inverses and using that $s^2=1$, or $s=s^{-1}$, we get $rs=sr^{-1}$. Thus, we have verified that $\langle a,b \mid a^2=b^2=(ab)^n=1 \rangle$ is another presentation for $D_{2n}$.
 
-Next, note that $1 \leq i \leq m-1$, $\sigma^i(a_1) = a_{1+i mod m} \neq a_1$, which implies that $|\sigma| > m-1$. Furthermore, $\sigma^m(a_n) = a_{k+m mod m}$ for all $k \in {1,2,...,m}$, implying that $|\sigma| \leq m$. From these observations, we can deduce that $|\sigma| = m$.
+\subsection*{Problem 1.3.10}
+Let us prove this with induction. Note that for the 'wrap around' cases, we implicitly define $a_0 := a_m$. For the base case, where $i=1$ for $\sigma = (a_1, a_2, ..., a_m)$, we have that $\sigma(a_k) = a_{k+1} \mod m$. For the inductive step, assume that the claim holds true for some $i$. To complete the proof, we solve for $i+1$. For $\sigma^{i+1} = \sigma(\sigma^i(a_k)) = \sigma(a_{k+i}) = a_{k+i+1}$. By induction, we have proved that $\sigma^i(a_k)=a_{k+i}$.
+
+Next, note that $1 \leq i \leq m-1$, $\sigma^i(a_1) = a_{1+i \mod m} \neq a_1$, which implies that $|\sigma| > m-1$. Furthermore, $\sigma^m(a_n) = a_{k+m \mod m}$ for all $k \in {1,2,...,m}$, implying that $|\sigma| \leq m$. From these observations, we can deduce that $|\sigma| = m$.
 
 \subsection*{Problem 1.3.11}
 To prove the iff condition, we must prove the claim for both directions.
 
 Suppose $\sigma^i$ is an $m$-cycle and FTSOC, assume that $gcd(i,m) = k > 1$. Then, by definition, there exists some $a,b \in \mathbb{N}$ such that $i=ad$ and $m=bd$. Then, we have that $(\sigma^i)^b = (\sigma^{ad})^b = (\sigma^m)^k = I$ since $\sigma$ is an $m$-cycle where $I$ is the identity permutation. Thus, we have that $|\sigma^m| \leq b < m$. This is a contradiction, since $\sigma^i$ is an $m$-cycle and thus $|\sigma^i| = m$. Thus, $i$ is coprime with $m$.
 
-Note that from the above problem, we know that $\sigma^i = (1+i, 2+i, ..., m+i)$. Next, FTSOC, assume that $i,m$ are coprime, but that $\sigma^i$is not an $m$-cycle. This implies that there exists some $a,b \in {1,2,...,m}$ such that $a+i \equiv = b+i mod m$. Then, we have that $m | (b-a)$, which is a contradiction since $b-a \leq m$ by construction. Thus, we are done.
+For the converse, FTSOC, assume that $i,m$ are coprime, but that $\sigma^i$ is not an $m$-cycle. This implies that by the above problem where $\sigma^i = (1+i, 2+i, ..., m+i)$, there exists some $a,b \in {1,2,...,m}$ such that $a+i \equiv b+i \mod m$. Then, we have that $m | (b-a)$, which is a contradiction since $b-a \leq m$ by construction. Thus, we are done.
+
+By proving the claim in both directions, we have satisfied the iff requirement.
 
 \subsection*{Problem 1.4.11}
 \subsubsection*{a}
@@ -79,17 +86,39 @@ XY &= \begin{pmatrix}
 \end{pmatrix}
 \\
 \end{align*}
-We can clearly see that $H(F)$ is closed under matrix multiplication by setting $a = a+d, b = b+e+af, c = f+e$ for generalized $X,Y$. To restrict a non-abelian condition, we can calculate $YX$ and compare and restrict terms. 
+We can clearly see that $H(F)$ is closed under matrix multiplication by setting $a = a+d, b = b+e+af, c = f+e$ for generalized $X,Y$. Next, since $F$ is a field, we always have $0,1 \in F$. Thus, we have
 \begin{align*}
-XY &= 
+A &= 
 \begin{pmatrix}
-1 & a+d & b+dc+e\\
-0 & 1 & f+c\\
+1 & 1 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+B &= 
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+AB &= 
+\begin{pmatrix}
+1 & 1 & 1\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+BA &= 
+\begin{pmatrix}
+1 & 1 & 0\\
+0 & 1 & 1\\
 0 & 0 & 1
 \end{pmatrix}
 \\
 \end{align*}
-From comparing values, $H(F)$ will be non-abelian as long as $dc \neq af$.
+
+From the two products, we can clearly see that $H(F)$ is nonabelian for all $F$, assuming that $(0 \neq 1)$.
 
 \subsubsection*{b}
 
@@ -128,12 +157,104 @@ X^{-1} &= \begin{pmatrix}
 \end{align*}
 Clearly this proves that $H(F)$ is closed under inverses as we can set $a = -a, b = b+ac, c = -c$ from the given formula of elements of $H(F)$, showing that $X^{-1} \in H(F)$.
 
-
 \subsubsection*{d}
-Because $F=\mathbb{Z}/2\mathbb{Z}$ only has two values, we can iterate across all possible values by casework. When $a=0,b=0,c=0$, this is the identity matrix, meaning that this element is order 1. When $a=0,b=1,c=0$, we have the case $X=x^{-1}$, meaning that this is an order 2 element. 
+Because $F=\mathbb{Z}/2\mathbb{Z}$ only has two values, we can iterate across all possible values by casework.
+\begin{align*}
+A_1 &= \begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+A_2 &= \begin{pmatrix}
+1 & 0 & 1\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+A_3 &= \begin{pmatrix}
+1 & 1 & 1\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+A_4 &= \begin{pmatrix}
+1 & 0 & 1\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+A_5 &= \begin{pmatrix}
+1 & 1 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+A_6 &= \begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+A_7 &= \begin{pmatrix}
+1 & 1 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+A_8 &= \begin{pmatrix}
+1 & 1 & 1\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+\end{align*}
+
+$A_1$ is clearly the identity matrix, so it has order 1. $A_2^2=A_3^2=A_4^2=A_5^2=A_6^2=I$, so these 5 elements have order 2. Next, note that $A_7^2=A_8^2=A_2$, so it follows that these 2 elements have order 4.
 
 \subsubsection*{e}
-Let $X \in H(\mathbb{R})$. Because $X \neq I$, we have that at least one of $a,b,c$ is nonzero. 
+We will prove using induction on $n$, that $A^n \neq I$ for some $A \in H(F)/I$, showing that $A$ has infinite order. More specifically, we will show that 
+\begin{align*}
+A^n &= \begin{pmatrix}
+1 & na & r\\
+0 & 1 & nc\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+\end{align*}
+where $r \in \mathbb{R}$.
+For the base case when $n=2$, using our results from (a), we have that
+
+\begin{align*}
+A^2 &= \begin{pmatrix}
+1 & 2a & 2b+ac\\
+0 & 1 & 2c\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+\end{align*}
+which is not the identity element for at least one nonzero $a,b,c$. Assume that the claim holds for some $k$. Now to prove for $k+1$, we have 
+
+\begin{align*}
+A^{k+1} &= \begin{pmatrix}
+1 & ka & r_k\\
+0 & 1 & kc\\
+0 & 0 & 1
+\end{pmatrix} \cdot
+\begin{pmatrix}
+1 & a & b\\
+0 & 1 & c\\
+0 & 0 & 1
+\end{pmatrix}
+\\
+&= \begin{pmatrix}
+1 & (k+1)a & b+kca+r_k\\
+0 & 1 & (k+1)c\\
+0 & 0 & 1
+\end{pmatrix}
+\end{align*}
+
+By the theory of induction, our claim holds. Casework on $a,b,c$ being 0 verifies that $A^n \neq I$.
 
 \begin{Prob}
 	Let $G$ be a group $a_1,\dots a_r\in G$. We say that $a_1, \dots, a_r$ pairwise commute if $a_i$ and $a_j$ commute $\forall i,j$. We say $a_1,\dots, a_r$ are rank independent if $a_1^{e_1}\dots a_r^{e_r}=1$ implies that $e_i$ is a multiple of $|a_i|$ for all $i$. We want to prove the following Proposition:
@@ -152,7 +273,13 @@ Let $X \in H(\mathbb{R})$. Because $X \neq I$, we have that at least one of $a,b
 \begin{enumerate}
 \item As the hint suggests, let's prove this using induction. For the base case, when $n = 0$, clearly $(ab)^0 = 1 = a^0b^0$. For the inductive step, first, assume that the claim holds for $k$. If $n \in \mathbb{Z}^+$, we have $(ab)^{k+1}=(a^kb^k)(ab)=a^{k+1}b^{k+1}$ from the associativity property and pairwise commutativity. Next, for $n \in \mathbb{Z}^-$, $(ab)^n = ((ab)^{|n|})^{-1} = b^{-|n|}a^{-|n|} = (b^{-1}...b^{-1})(a^{-1}...a^{-1})$. By the inverse property, it follows that $a^{-1},b^{-1}$ are also pairwise commutative. Thus, we can rearrange the product to get $(ab)^n = (a^{-1}...a^{-1})(b^{-1}...b^{-1}) = a^nb^n$, which completes the proof.
 
-\item hello
+\item We will prove the claim using induction on $r$. For the base case, when $r=1$, the claim clearly holds. For the inductive step, assume that the claim holds for some $r=k$. Then, to prove the claim for $r=k+1$, we have
+\begin{align*}
+    (a_1\dots a_{k+1})^n &= (a_1\dots a_{k})^n a_{k+1}^n \\
+                         &= a_1^n\dots a_{k}^n a_{k+1}^n \\
+\end{align*}
+Note that the first equality from above holds due to (1). By induction, we have shown that the claim holds for all $r \in \mathbb{N}$, so we are done.
+
 
 \item To prove the equality, we will first prove two subclaims. We will first show that $|a_1...a_r|$ divides $lcm(|a_1|,|a_2|,...,|a_r|)$. Let $m = lcm(|a_1|,|a_2|,...,|a_r|)$. We can rewrite $m = |a_1|b_1=|a_2|b_2 = ... = |a_r|b_r$. Then, by the above claim, we have $(a_1...a_r)^m = a_1^m...a_r^m=(a_1^{|a_1|})^b_1...(a_r^{|a_r|})^b_r=e$. Thus, even if the lcm may not be the order of $a_1...a_r$, we still have that it divides $lcm(|a_1|,|a_2|,...,|a_r|)$.Next, we will show that $lcm(|a_1|,|a_2|,...,|a_r|)$ divides $|a_1...a_r|$. By definition, for some $k$, $(a_1...a_r)^k=e$. By the above claim, we can again rewrite $a_1^k...a_r^k=e$. Because $a_i$ are rank independent elements, it follows that $|a_i|$ divides $k$ for all $i$. By the definition of the lcm, it also follows that $lcm(|a_1|,|a_2|,...,|a_r|)$ divides $|a_1...a_r|$. Because these two terms divide each other, we can conclude that, in fact, $lcm(|a_1|,|a_2|,...,|a_r|) = |a_1...a_r|$.
 
@@ -163,13 +290,10 @@ $$\alpha\beta(a_i) = \alpha(\beta(a_i)) = \alpha(a_i) = a_{i+1}$$
 $$\beta\alpha(a_i) = \beta(\alpha(a_i)) = \beta(a_{i+1}) = a_{i+1}$$
 So $\alpha\beta = \beta\alpha$ for $a_i$, and a similar argument can be made for $b_i$. Since $\alpha$ and $\beta$ both identity maps $c_i$, an even easier argument can be made for $\alpha\beta = \beta\alpha$ for $c_i$. Thus, we have proven pairwise commutativity.
 
-Next, to prove rank independence. Suppose that $\sigma_1^{e_1}...\sigma_r^{e_r} = 1$ for cycles $\sigma_i$. Because the cycles are disjoint, we have that $\sigma_1^{e_1} = ... = sigma_r^{e_r} = 1$. As a result, we have that $|\sigma_1| \mid e_1,...,|\sigma_r| \mid e_r$, which is the definition of rank independence, so we are done.
+Next, to prove rank independence. Suppose that $\gamma=\sigma_1...\sigma_r$ for cycles $\sigma_i$ where $\gamma$ is order $c$. Because the disjoint cycles commute with each other, we can write $\gamma^c = \sigma_1^{c}...\sigma_r^{c} = 1$, and so $\sigma_1^{c} = ... = \sigma_r^{c} = 1$. As a result, we have that $|\sigma_1| \mid c,...,|\sigma_r| \mid c$, which is the definition of rank independence, so we are done.
 
-*****ABOVE IS A LITTLE SKETCH, ESP WHERE WE JUMP TO IDENTITY FOR ALL ELEMENTS*****
+Finally, since a permutation is defined as a product of cycles and from 1.4.10 that the order of the cycle is its length, with the proven claims and (3), the claim that the order of an element in $S_n$ equals the lcm of the lengths of the cycles in its cycle decomposition easily follows, under the interpretation that disjoint cycles are pairwise commutative and rank independent elements of finite order, assuming that $n$ is finite.
 
-Finally, since a permutation is defined as a product of cycles and we know from 1.4.10 that the order of the cycle is its length, with the above claim and (3), the claim that the order of an element in $S_n$ equals the lcm of the lengths of the cycles in its cycle decomposition easily follows.
-
-Also, if $n$ is finite, then there's clearly finite order.
 \end{enumerate}
 \end{solution}
 
@@ -183,13 +307,15 @@ Also, if $n$ is finite, then there's clearly finite order.
 \end{Prob}
 
 \begin{solution}
-To proceed with the proof, we must first prove the following axiom
-
-(1) 
-
-(2)
-
-(3) If we prove that the products of the permutations yields all transpositions of the form $(i,i+1)$, then by (1) the proof should follow.
+\begin{enumerate}
+    \item The claim clearly holds for when $n=2$, so we examine the case $n \geq 3$. Since we know that $S_n$ can be written as a product of transpositions, all we need to show is that an arbitrary transposition $(a,b)$ can be rewritten as a product of transpositions in the given set. We will prove this claim using induction. WLOG, suppose $a < b$. We will induct on $b-a \geq 1$. The base case, $b-a=1$, or $(a,a+1)$, is trivial. For the inductive step, assume that $b-a=k$ holds true. Next, to prove that the claim holds for some $k+1$, consider the expression
+    $$(a,b) = (a,a+1)(a+1,b)(a,a+1)$$
+    Clearly the first and third transpositions is part of our desired set. Our middle transposition, $(a+1,b)$ should also hold true because $b-(a+1) = k+1-1=k$ which is essentially our induction hypothesis. Thus, by induction our claim holds and the given set is a generator for symmetric group $S_n$.
+    
+    \item The claim clearly holds for when $n=2$, so we examine the case $n \geq 3$. Since we know that $S_n$ can be written as a product of transpositions, consider an arbitrary transposition $(a,b)$. This can be rewritten as $(a,b) = (1,a)(1,b)(1,a)$. By changing all of the original transpositions to this desired form, we have shown that $S_n$ can be generated by the given set.
+    
+    \item Again the claim clearly holds for $n=2$, so we examine the case $n \geq 3$. If we prove that the products of the permutations yields all transpositions of the form $(i,i+1)$, then by (1) the proof should follow. Note that for $k = 1,...,n-2$, we have $(1,2,...,n)^k(1,2)(1,2,...,n)^{-k} = ((1,2,...,n)^k(1), (1,2,...,n)^k(2)) = (k+1,k+2)$ from 1.3.10. In addition to the $(1,2)$ transposition, this set of transpositions is equal to the on given in (1), so the claim holds.
+\end{enumerate}
 \end{solution}
 
 \footnotetext{Email address: pablo.boixedaalvarez@yale.edu}
